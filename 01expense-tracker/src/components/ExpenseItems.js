@@ -5,6 +5,7 @@ import ExpenseDate from "./ExpenseDate";
 function ExpenseItems(props) {
   return (
     <div className="expense-item">
+      {/* <div>{props.date.toISOString()}</div> */}
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
         <h2>{props.title}</h2>
@@ -14,7 +15,17 @@ function ExpenseItems(props) {
   );
 }
 
-// passing props using second approch object destruturing
+// function ExpenseItems(props) {
+//   return (
+//     <div className="expense-item">
+//       <div>{props.expenses.date.toISOString()}</div>
+//       <div className="expense-item__description">
+//         <h2>{props.expenses.title}</h2>
+//         <div className="expense-item__price">${props.expenses.amount}</div>
+//       </div>
+//     </div>
+//   );
+// }
 
 // function ExpenseItems({ date, title, amount }) {
 //   return (
