@@ -1,5 +1,5 @@
 import "./App.css";
-import ExpenseItems from "./components/ExpenseItems";
+import Expenses from "./components/Expense/Expenses";
 
 function App() {
   const expenses = [
@@ -26,7 +26,10 @@ function App() {
   return (
     <>
       <p>Lets Gets Started</p>
-      <ExpenseItems title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date} />
+
+      <Expenses items={expenses} />
+
+      {/* <ExpenseItems title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date} /> */}
 
       {/*second approch passign whole data as props  */}
       {/* <ExpenseItems expenses={expenses[0]} /> */}
@@ -35,4 +38,3 @@ function App() {
 }
 
 export default App;
-
