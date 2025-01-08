@@ -13,6 +13,8 @@ import Card from "../UI/Card";
 
 // in the state we use const because we do not assign value using assignment operator we pass value to setTitle where react handle the value
 
+// state are seperated on a per component instance basis
+
 function ExpenseItems(props) {
   const [title, setTitle] = useState(props.title);
 
