@@ -24,9 +24,19 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const saveExpenseDataHandler = (enterdExpenseData) => {
+    const expenseData = {
+      ...enterdExpenseData,
+      id: Math.random().toString(),
+    };
+    expenses.push(expenseData);
+    console.log(expenses);
+  };
+
   return (
     <>
-      <NewExpense />
+      <NewExpense onSaveExpenseData={saveExpenseDataHandler} />
       <Expenses items={expenses} />
 
       {/* <ExpenseItems title={expenses[0].title} amount={expenses[0].amount} date={expenses[0].date} /> */}
