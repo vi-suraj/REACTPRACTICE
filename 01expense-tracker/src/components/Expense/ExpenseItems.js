@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ExpenseItems.css";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
@@ -16,20 +16,13 @@ import Card from "../UI/Card";
 // state are seperated on a per component instance basis
 
 function ExpenseItems(props) {
-  const [title, setTitle] = useState(props.title);
-
-  const titleHandler = () => {
-    setTitle("Updated");
-  };
-
   return (
     <Card className="expense-item">
       {/* <div>{props.date.toISOString()}</div> */}
       <ExpenseDate date={props.date} />
       <div className="expense-item__description">
-        <h2>{title}</h2>
+        <h2>{props.title}</h2>
         <div className="expense-item__price">${props.amount}</div>
-        <button onClick={titleHandler}>Update Title</button>
       </div>
     </Card>
   );
