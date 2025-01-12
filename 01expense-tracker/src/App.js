@@ -34,8 +34,6 @@ function App() {
     });
   };
 
-  console.log(expense);
-
   return (
     <>
       <NewExpense onSaveExpenseData={saveExpenseDataHandler} />
