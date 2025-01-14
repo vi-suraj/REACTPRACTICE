@@ -31,7 +31,7 @@ const ExpenseForm = (props) => {
     e.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
@@ -64,10 +64,10 @@ const ExpenseForm = (props) => {
           </div>
         )}
         <div className={formShow === true ? "new-expense__actions" : "new-expense__actions center"}>
-          {formShow && <button type="submit">Add Expense</button>}
           <button type="text" onClick={() => setFormShow(!formShow)}>
             {formShow === true ? "Cancel" : "Add New Expense"}
           </button>
+          {formShow && <button type="submit">Add Expense</button>}
         </div>
       </form>
     </div>
