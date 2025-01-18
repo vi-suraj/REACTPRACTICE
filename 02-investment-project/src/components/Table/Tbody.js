@@ -1,9 +1,9 @@
 import Trow from "./Trow";
 
-const Tbody = () => {
+const Tbody = (props) => {
   return (
     <tbody>
-      <Trow />
+      <Trow data={props.tdata} />
     </tbody>
   );
 };

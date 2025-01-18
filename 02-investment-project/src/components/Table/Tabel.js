@@ -1,13 +1,12 @@
+import Tbody from "./Tbody";
 import Thead from "./Thead";
-import Trow from "./Trow";
 
 const Table = (props) => {
   return (
     <table className="result">
       <Thead />
-      <tbody>
-        <Trow />
-      </tbody>
+
+      <Tbody tdata={props.data} />
     </table>
   );
 };

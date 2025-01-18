@@ -30,6 +30,8 @@ function App() {
     // do something with yearlyData ...
   };
 
+  console.log(results);
+
   return (
     <div>
       <Header />
