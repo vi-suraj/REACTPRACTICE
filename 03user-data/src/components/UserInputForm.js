@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import "./UserInputForm.css";
+import Modal from "./Modal";
 
 const UserInputForm = (props) => {
-  const [emptyField, setEmptyField] = useState(false);
-  const [negativeAge, setNegativeAge] = useState(false);
+  const [error, setError] = useState();
   const [userData, setUserData] = useState({
     "user-name": "",
     "user-age": "",
@@ -19,13 +19,19 @@ const UserInputForm = (props) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (userData["user-name"].length === 0 || userData["user-age"].length === 0) {
-      setEmptyField(true);
+    if (userData["user-name"].trim().length === 0 || userData["user-age"].trim().length === 0) {
+      setError({
+        title: "Invalid Input",
+        message: "Please Enter Valid Name And Age (Not Empty Filed)",
+      });
       return;
     }
 
-    if (userData["user-age"] <= 0) {
-      setNegativeAge(true);
+    if (+userData["user-age"] <= 0) {
+      setError({
+        title: "Invalid Age",
+        message: "Please Enter Valid Age",
+      });
       return;
     }
 
@@ -35,8 +41,15 @@ const UserInputForm = (props) => {
       "user-age": "",
     });
   };
+
+  const errorModalBtn = () => {
+    setError(null);
+  };
+
   return (
     <div>
+      {error && <Modal title={error.title} message={error.message} onConfirm={errorModalBtn} btn="Okay" />}
+
       <form onSubmit={formSubmitHandler}>
         <div className="form-body">
           <label htmlFor="user-input">Username</label>
@@ -51,23 +64,7 @@ const UserInputForm = (props) => {
         </div>
       </form>
 
-      {emptyField && (
-        <div className="modal">
-          <div className="modal-outer">
-            <div className="modal-inner">
-              <div className="modal-head">
-                <h2>Invalid Input</h2>
-              </div>
-              <div className="modal-content">
-                <p>Please Enter a valid name and age (non-empty field)</p>
-                <button onClick={() => setEmptyField(false)}>Okay</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {negativeAge && (
+      {/* {negativeAge && (
         <div className="modal">
           <div className="modal-outer">
             <div className="modal-inner">
@@ -81,7 +78,7 @@ const UserInputForm = (props) => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
